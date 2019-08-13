@@ -5,9 +5,11 @@ run_docker() {
 		-v /home/digital/RL:/root/RL \
 		-v /home/digital/rl_trainer:/root/rl_trainer \
 		-w /root \
+		--name rl \
 		--shm-size 16G \
 		--entrypoint=/bin/bash \
-		syuntoku/rl:ray
+		--runtime=nvidia \
+		syuntoku/rl:latest
 		#--link mongo_db \
 		#--net sacred_omniboard \
 }
@@ -21,9 +23,11 @@ run_docker_sacred() {
 		-w /root \
 		--link mongo_db \
 		--net sacred_omniboard \
+		--name rl \
 		--shm-size 16G \
 		--entrypoint=/bin/bash \
-		syuntoku/rl:ray
+		--runtime=nvidia \
+		syuntoku/rl:latest
 }
 
 getopts "s" OPT
