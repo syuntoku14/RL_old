@@ -3,15 +3,15 @@ run_docker() {
 		-p 6080:6080 \
 		-p 5000:5000 \
 		-v /home/digital/RL:/root/RL \
-		-v /home/digital/rl_trainer:/root/rl_trainer \
+		-v /home/digital/avoid_pedestrians:/root/avoid_pedestrians \
 		-w /root \
 		--name rl \
 		--shm-size 16G \
 		--entrypoint=/bin/bash \
-		--runtime=nvidia \
 		syuntoku/rl:latest
 		#--link mongo_db \
 		#--net sacred_omniboard \
+		# --runtime=nvidia \
 }
 
 run_docker_sacred() {
@@ -19,14 +19,13 @@ run_docker_sacred() {
 		-p 6080:6080 \
 		-p 5000:5000 \
 		-v /home/digital/RL:/root/RL \
-		-v /home/digital/rl_trainer:/root/rl_trainer \
+		-v /home/digital/avoid_pedestrians:/root/avoid_pedestrians \
 		-w /root \
 		--link mongo_db \
 		--net sacred_omniboard \
 		--name rl \
 		--shm-size 16G \
 		--entrypoint=/bin/bash \
-		--runtime=nvidia \
 		syuntoku/rl:latest
 }
 
